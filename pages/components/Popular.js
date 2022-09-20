@@ -14,9 +14,8 @@ const Popular = () => {
   }, [])
   return (
     <HStack >{
-      popular.map((ele) => (<VStack>
-        <AnimeCard key={ele.animeId} animeImg={ele.animeImg} title={ele.animeTitle} />
-        
+      popular.map((ele) => (<VStack key={ele.animeId} >
+        <AnimeCard animeImg={ele.animeImg} title={ele.animeTitle} />
       </VStack>
       )
       )}</HStack>
