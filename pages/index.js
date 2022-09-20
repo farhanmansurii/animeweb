@@ -8,17 +8,13 @@ import Popular from './components/Popular'
 export const baseURL = 'https://gogoanime.herokuapp.com/'
 export default function Home() {
 
-  
+
 
   return (
     <Flex >
       <Navbar />
-      <VStack mt='4rem' overflowX='clip'  >
-        <Text>
-          Popular Anime
-        </Text>
-        <Popular />
-      </VStack>
+
+      <Popular />
 
     </Flex>
   )
