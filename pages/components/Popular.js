@@ -19,7 +19,7 @@ const Popular = () => {
     <HStack  mt='4rem'  {...events}
     ref={ref} overflowX='scroll' overflow='hidden'>{
       popular.map((ele) => (<VStack key={ele.animeId} >
-        <AnimeCard animeImg={ele.animeImg} title={ele.animeTitle}  link={ele.animeUrl}/>
+        <AnimeCard animeImg={ele.animeImg} title={ele.animeTitle}  />
       </VStack>
       )
       )}</HStack>
