@@ -10,7 +10,7 @@ const Popular = ({ baseURL }) => {
     return () => {};
   }, []);
   return (
-    <SimpleGrid minChildWidth="190px">
+    <SimpleGrid minChildWidth="180px">
       {list.map((ele) => (
         <VStack key={ele.slug}>
           <AnimeCard

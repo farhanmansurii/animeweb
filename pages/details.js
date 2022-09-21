@@ -43,7 +43,7 @@ function details() {
         </VStack>
         {epi.map((e) => (
           <Container key={e.id} size="sm" bg="blackAlpha.200" m="1">
-            <Image src={e.image} width="300px" p="3rem" alt="images" />
+            <Image src={e.image} width="500px" p="3rem" alt="images" />
             <Text color="white">
               {e.number} {e.title}
             </Text>
