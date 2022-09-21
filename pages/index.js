@@ -1,4 +1,4 @@
-import { Flex, Grid, HStack, Text, Button, Image, VStack } from '@chakra-ui/react'
+import { Flex, Grid, HStack, Text, Button, Image, VStack, Divider } from '@chakra-ui/react'
 import Head from 'next/head'
 import AnimeCard from './components/AnimeCard'
 import Navbar from './components/Navbar'
@@ -11,10 +11,14 @@ export default function Home() {
 
 
   return (
-    <Flex >
+    <Flex  overflow='hidden'>
       <Navbar />
-
-      <Popular />
+      <Flex direction='column' overflow='hidden' mt='4rem'  >
+        <Divider  my='1rem'/>
+        <Text fontSize='2xl'>Popular Anime</Text>
+        <Popular baseURL={"https://api.enime.moe/popular"} />
+        <Divider  my='1rem'/>
+      </Flex>
 
     </Flex>
   )

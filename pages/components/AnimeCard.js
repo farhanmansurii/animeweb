@@ -1,13 +1,16 @@
 import { Button, Flex, Text, Image } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
-function AnimeCard({ animeImg , title }) {
+function AnimeCard({ animeImg, title,id }) {
   return (
-   <>
-      <Flex flexDir='column'  p='3'_hover={{background:'#D3D3D3' , borderRadius:'10px'}}>
-        <Image src={animeImg} borderRadius='xl' layout='fill' height='12.8rem' minWidth='9.6rem' />
-        <Text noOfLines={1}>{title}</Text>
-      </Flex></>
+    <>
+      <Link href={`/details?id=${id}` } >
+        <Flex flexDir='column' p='3' _hover={{ borderRadius: '10px' }} width='11.6rem' height='18rem' align='center'>
+          <Image src={animeImg} borderRadius='xl' _hover={{ height: '13rem', width: '9.8rem', transition: '0.2s' }} height='12.8rem' width='9.6rem' />
+          <Text noOfLines={1} >{title}</Text>
+        </Flex>
+      </Link>
+    </>
   )
 }
 
