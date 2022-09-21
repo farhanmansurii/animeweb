@@ -20,10 +20,10 @@ export default function Home() {
     <Grid background="black">
       <Navbar />
       <Flex direction="column" mt="4rem">
-        <Text fontSize="2xl" color="white">
+        <Text fontSize="3xl" color="white" align="center" my="1rem">
           Popular Anime
         </Text>
-        <Popular baseURL={"https://api.enime.moe/popular?perPage=100"} />
+        <Popular baseURL={"https://api.enime.moe/popular?perPage=50"} />
         <Divider my="1rem" />
       </Flex>
     </Grid>

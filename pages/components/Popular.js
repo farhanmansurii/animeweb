@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, VStack, Grid } from "@chakra-ui/react";
+import { Flex, VStack, Grid, SimpleGrid } from "@chakra-ui/react";
 import AnimeCard from "./AnimeCard";
 const Popular = ({ baseURL }) => {
   const [list, setList] = React.useState([]);
@@ -10,7 +10,7 @@ const Popular = ({ baseURL }) => {
     return () => {};
   }, []);
   return (
-    <Grid templateColumns="repeat(6, 1fr)" gap={2}>
+    <SimpleGrid minChildWidth="190px">
       {list.map((ele) => (
         <VStack key={ele.slug}>
           <AnimeCard
@@ -20,7 +20,7 @@ const Popular = ({ baseURL }) => {
           />
         </VStack>
       ))}
-    </Grid>
+    </SimpleGrid>
   );
 };
 
