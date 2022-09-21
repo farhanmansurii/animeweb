@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
 function anime() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    fetch("https://consumet-api.herokuapp.com/anime/gogoanime/anime").then((response) => response.json())
+    fetch("https://consumet-api.herokuapp.com/anime/gogoanime/anime")
+      .then((response) => response.json())
       .then((animelist) => console.log(animelist.results));
 
-    return () => {
-    }
-  }, [])
+    return () => {};
+  }, []);
 
-
-  return (
-    <div>anime</div>
-  )
+  return <div>anime</div>;
 }
 
-export default anime
+export default anime;

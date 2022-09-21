@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { Text, Image, VStack, Container, Flex, HStack } from "@chakra-ui/react";
@@ -6,7 +7,6 @@ function details() {
   const [deets, setDeets] = useState([]);
   const [name, setName] = useState([]);
   const [epi, setEpi] = useState([]);
-  const eps = [];
   const router = useRouter();
   const animename = router.query.id;
   const URL = "https://api.enime.moe/anime/";
