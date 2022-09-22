@@ -23,7 +23,7 @@ export default function Home() {
         <Text fontSize="3xl" color="white" align="center" my="1rem">
           Popular Anime
         </Text>
-        <Popular baseURL={"https://api.enime.moe/popular?perPage=50"} />
+        <Popular baseURL={"https://gogoanime.herokuapp.com/popular?perPage=50"} />
         <Divider my="1rem" />
       </Flex>
     </Grid>

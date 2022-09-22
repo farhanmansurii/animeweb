@@ -6,12 +6,12 @@ const Popular = ({ baseURL }) => {
   React.useEffect(() => {
     fetch(baseURL)
       .then((response) => response.json())
-      .then((animelist) => setList(animelist));
+      .then((animelist) =>setList(animelist));
     return () => {};
   }, []);
   return (
     <SimpleGrid  minChildWidth="200px" >
-      {list.slice(0,12).map((ele) => (
+      {list.slice(0,12).map((ele) => 
         <VStack key={ele.animeId}>
           <AnimeCard
             animeImg={ele.animeImg}
@@ -19,7 +19,7 @@ const Popular = ({ baseURL }) => {
             id={ele.animeId}
           />
         </VStack>
-      ))}
+      )}
     </SimpleGrid>
   );
 };

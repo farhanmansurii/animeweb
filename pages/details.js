@@ -42,10 +42,8 @@ function details() {
             <Text color="white">{deets.synopsis}</Text>
           </Flex>
         </VStack>
-        <Text color='white'  fontSize='2xl'>Episodes 1 to {epi.length} </Text>
         <SimpleGrid bg='white'>
-ji
-        {epi.map((e)=>(<Link href={e.episodeUrl} >{e.episodeId}</Link>))}
+        {epi.map((e)=>(<Link key={e.episodeId} href={e.episodeUrl} >{e.episodeNum}</Link>))}
         </SimpleGrid>
       </Flex>
     </>
