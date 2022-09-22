@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { Text, Image, VStack, Container, Flex, HStack } from "@chakra-ui/react";
+import { Text, Image, VStack, Container, Flex, HStack, SimpleGrid } from "@chakra-ui/react";
+import Link from "next/link";
 
 function details() {
   const [deets, setDeets] = useState([]);
@@ -9,7 +10,7 @@ function details() {
   const [epi, setEpi] = useState([]);
   const router = useRouter();
   const animename = router.query.id;
-  const URL = "https://api.enime.moe/anime/";
+  const URL = "https://gogoanime.herokuapp.com/anime-details/";
   React.useEffect(() => {
     fetch(URL + animename)
       .then((response) => response.json())
@@ -19,7 +20,7 @@ function details() {
       .then((animelist) => setDeets(animelist));
     fetch(URL + animename)
       .then((response) => response.json())
-      .then((animelist) => setEpi(animelist.episodes));
+      .then((animelist) => setEpi(animelist.episodesList));
     return () => {};
   }, []);
 
@@ -27,7 +28,7 @@ function details() {
     <>
       <Flex bg="black" direction="column">
         <VStack>
-          <Image src={deets.coverImage} width="6s00px" p="3rem" />
+          <Image src={deets.animeImg} width="6s00px" p="3rem" />
           <Flex direction="column" pt="3rem">
             <Text
               fontWeight="bold"
@@ -36,19 +37,16 @@ function details() {
               textTransform="uppercase"
               color="white"
             >
-              {name.english}
+              {deets.animeTitle}
             </Text>
-            <Text color="white">{deets.description}</Text>
+            <Text color="white">{deets.synopsis}</Text>
           </Flex>
         </VStack>
-        {epi.map((e) => (
-          <Container key={e.id} size="sm" bg="blackAlpha.200" m="1">
-            <Image src={e.image} width="500px" p="3rem" alt="images" />
-            <Text color="white">
-              {e.number} {e.title}
-            </Text>
-          </Container>
-        ))}
+        <Text color='white'  fontSize='2xl'>Episodes 1 to {epi.length} </Text>
+        <SimpleGrid bg='white'>
+ji
+        {epi.map((e)=>(<Link href={e.episodeUrl} >{e.episodeId}</Link>))}
+        </SimpleGrid>
       </Flex>
     </>
   );

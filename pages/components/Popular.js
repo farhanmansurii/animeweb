@@ -6,17 +6,17 @@ const Popular = ({ baseURL }) => {
   React.useEffect(() => {
     fetch(baseURL)
       .then((response) => response.json())
-      .then((animelist) => setList(animelist.data));
+      .then((animelist) => setList(animelist));
     return () => {};
   }, []);
   return (
-    <SimpleGrid minChildWidth="180px">
-      {list.map((ele) => (
-        <VStack key={ele.slug}>
+    <SimpleGrid  minChildWidth="200px" >
+      {list.slice(0,12).map((ele) => (
+        <VStack key={ele.animeId}>
           <AnimeCard
-            animeImg={ele.coverImage}
-            title={ele.title.english}
-            id={ele.id}
+            animeImg={ele.animeImg}
+            title={ele.animeTitle}
+            id={ele.animeId}
           />
         </VStack>
       ))}
