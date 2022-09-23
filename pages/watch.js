@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { useRouter } from 'next/router';
+import { Container } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 const Watch = () => {
@@ -13,9 +14,9 @@ const Watch = () => {
       .then((animelist) => setEplink(animelist.sources[0].url));
     return () => { };
   }, []);
-  return (<>
-    <ReactPlayer controls={true} playing={false} light={false} url={eplink} />
-  </>
+  return (<Container color='black' align='center' width='100%'>
+    <ReactPlayer controls={true} playing={false} width='640px'  url={eplink} />
+  </Container>
   )
 }
 

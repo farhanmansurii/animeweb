@@ -11,7 +11,7 @@ const Popular = ({ baseURL }) => {
   }, []);
   return (
     <SimpleGrid  minChildWidth="200px" >
-      {list.slice(0,12).map((ele) => 
+      {list.map((ele) => 
         <VStack key={ele.animeId}>
           <AnimeCard
             animeImg={ele.animeImg}

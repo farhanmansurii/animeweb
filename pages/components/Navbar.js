@@ -6,6 +6,7 @@ const data = [
   { name: "Manga", link: "/manga" },
   { name: "Anime", link: "/anime" },
   { name: "My List", link: "/mylist" },
+  { name: "Search", link: "/Search" },
 ];
 const Navbar = () => {
   return (
@@ -18,6 +19,7 @@ const Navbar = () => {
       backdropFilter="saturate(180%) blur(5px)"
       p="0.5rem"
     >
+      
       {data.map((e, index) => (
         <Link key={index} href={e.link}>
           <Button mx="1rem" variant="unstyled" fontStyle="normal">

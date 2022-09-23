@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { Text, Image, VStack, Container, Flex, HStack, SimpleGrid } from "@chakra-ui/react";
+import { Text, Image, VStack, Container, Flex, HStack, SimpleGrid, Button, Divider } from "@chakra-ui/react";
 import Link from "next/link";
 
 function details() {
   const [deets, setDeets] = useState([]);
-  const [name, setName] = useState([]);
   const [epi, setEpi] = useState([]);
   const router = useRouter();
   const animename = router.query.id;
@@ -20,12 +19,17 @@ function details() {
       .then((animelist) => setEpi(animelist.episodes));
     return () => { };
   }, []);
+  async function getServerSideProps() {
+    return {
+      props: {}, // will be passed to the page component as props
+    }
+  }
 
   return (
     <>
       <Flex bg="black" direction="column">
-        <VStack>
-          <Image src={deets.image} alt='' width="6s00px" p="3rem" />
+        <Flex direction='row'>
+          <Image src={deets.image} alt='' width="300px" p="3rem" />
           <Flex direction="column" pt="3rem">
             <Text
               fontWeight="bold"
@@ -38,9 +42,13 @@ function details() {
             </Text>
             <Text color="white">{deets.description}</Text>
           </Flex>
-        </VStack>
-        <SimpleGrid bg='white'>
-          {epi.map((e) => <Link key={e.id} href={`/watch?id=${e.id}` }>{e.id}</Link>)}
+        </Flex>
+        <Divider  mt='1rem'/>
+        <Text fontSize='2xl' color='white' m='1rem'>Episode List</Text>
+        <Divider  mt='1rem'/>
+        <SimpleGrid  columns={[3, null, 8]}  mx='2rem' alignItems='center' >
+          {
+          epi && epi.map((e , index ) => <Link key={e.id} href={`/watch?id=${e.id}` }><Button width='fit-content' m='0.5rem' width='100px'>Ep No {index+1}</Button></Link>)}
         </SimpleGrid>
       </Flex>
     </>

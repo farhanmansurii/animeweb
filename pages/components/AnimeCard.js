@@ -9,16 +9,15 @@ function AnimeCard({ animeImg, title, id }) {
           flexDir="column"
           p="3"
           _hover={{ borderRadius: "10px" }}
-          width="11.6rem"
-          height="18rem"
+          width='100%'
+          height='100%'
           align="center"
         >
           <Image
             src={animeImg}
             borderRadius="xl"
-            _hover={{ height: "13rem", width: "9.8rem", transition: "0.2s" }}
-            height="12.8rem"
-            width="9.6rem"
+            _hover={{ height: "110%", width: "110%", transition: "0.2s" }}
+            height= "100%" width= "100%"
             alt=""
           />
           <Text noOfLines={1} color="white">
