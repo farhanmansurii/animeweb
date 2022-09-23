@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
-const watch = () => {
+const Watch = () => {
   const router = useRouter();
   const episodeName = router.query.id;
   const URL = 'https://consumet-api.herokuapp.com/anime/gogoanime/watch/'
   const [eplink, setEplink] = useState()
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(URL + episodeName)
       .then((response) => response.json())
       .then((animelist) => setEplink(animelist.sources[0].url));
@@ -19,4 +19,4 @@ const watch = () => {
   )
 }
 
-export default watch
+export default Watch

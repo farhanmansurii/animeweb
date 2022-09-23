@@ -26,7 +26,7 @@ function details() {
     <>
       <Flex bg="black" direction="column">
         <VStack>
-          <Image src={deets.image} width="6s00px" p="3rem" />
+          <Image src={deets.image} alt='' width="6s00px" p="3rem" />
           <Flex direction="column" pt="3rem">
             <Text
               fontWeight="bold"
