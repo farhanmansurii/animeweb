@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { Text, Image, VStack, Container, Flex, HStack, SimpleGrid } from "@chakra-ui/react";
 import Link from "next/link";
-import Episode from "./components/episode";
 
 function details() {
   const [deets, setDeets] = useState([]);
