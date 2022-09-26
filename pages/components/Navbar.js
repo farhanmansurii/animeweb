@@ -6,7 +6,6 @@ const data = [
   { name: "Manga", link: "/manga" },
   { name: "Anime", link: "/anime" },
   { name: "My List", link: "/mylist" },
-  { name: "Search", link: "/search" },
 ];
 const Navbar = () => {
   return (
@@ -25,6 +24,11 @@ const Navbar = () => {
           </Button>
         </Link>
       ))}
+       <Link href='/SearchPage'>
+          <Button mx="1rem" variant="unstyled" fontStyle="normal">
+          Search
+          </Button>
+        </Link>
     </Flex>
   );
 };
