@@ -13,7 +13,7 @@ function details() {
   React.useEffect(() => {
     fetch(URL + animename)
       .then((response) => response.json())
-      .then((animelist) => setDeets(animelist));
+      .then((animelist) => console.log(animelist));
     fetch(URL + animename)
       .then((response) => response.json())
       .then((animelist) => setEpi(animelist.episodes));
@@ -44,7 +44,7 @@ function details() {
           </Flex>
         </Flex>
         <Divider  mt='1rem'/>
-        <Text fontSize='2xl' m='1rem'>Episode List</Text>
+        <Text fontSize='2xl'  m='1rem'>Episode List</Text>
         <Divider  mt='1rem'/>
         <SimpleGrid  columns={[3, null, 8]}  mx='2rem' alignItems='center' >
           {
