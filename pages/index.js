@@ -18,11 +18,11 @@ import Popular from "./components/Popular";
 export const baseURL = "https://gogoanime.herokuapp.com/";
 export default function Home({ popular, action }) {
   return (
-    <Grid background="black">
+    <Grid>
       <Navbar />
 
       <Flex direction="column" mt="4rem">
-        <Text fontSize="3xl" color="white" align="center" my="1rem">
+        <Text fontSize="3xl"  align="center" my="1rem">
           Popular Anime
         </Text>
         <SimpleGrid minChildWidth="200px" >
@@ -37,7 +37,7 @@ export default function Home({ popular, action }) {
           ))}
         </SimpleGrid>
         <Divider my="1rem" />
-        <Text fontSize="3xl" color="white" align="center" my="1rem">
+        <Text fontSize="3xl"  align="center" my="1rem">
           Recent Episodes
         </Text>
         <SimpleGrid minChildWidth="200px" >

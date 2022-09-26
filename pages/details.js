@@ -27,7 +27,7 @@ function details() {
 
   return (
     <>
-      <Flex bg="black" direction="column">
+      <Flex  direction="column">
         <Flex direction='row'>
           <Image src={deets.image} alt='' width="300px" p="3rem" />
           <Flex direction="column" pt="3rem">
@@ -36,19 +36,19 @@ function details() {
               fontSize="3xl"
               textShadow="lg"
               textTransform="uppercase"
-              color="white"
+              
             >
               {deets.title}
             </Text>
-            <Text color="white">{deets.description}</Text>
+            <Text >{deets.description}</Text>
           </Flex>
         </Flex>
         <Divider  mt='1rem'/>
-        <Text fontSize='2xl' color='white' m='1rem'>Episode List</Text>
+        <Text fontSize='2xl' m='1rem'>Episode List</Text>
         <Divider  mt='1rem'/>
         <SimpleGrid  columns={[3, null, 8]}  mx='2rem' alignItems='center' >
           {
-          epi && epi.map((e , index ) => <Link key={e.id} href={`/watch?id=${e.id}` }><Button width='fit-content' m='0.5rem' width='100px'>Ep No {index+1}</Button></Link>)}
+          epi && epi.map((e , index ) => <Link key={e.id} href={`/watch?id=${e.id}` }><Button width='fit-content' m='0.5rem' >Ep No {index+1}</Button></Link>)}
         </SimpleGrid>
       </Flex>
     </>

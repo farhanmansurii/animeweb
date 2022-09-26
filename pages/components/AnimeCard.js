@@ -20,7 +20,7 @@ function AnimeCard({ animeImg, title, id }) {
             height= "100%" width= "100%"
             alt=""
           />
-          <Text noOfLines={1} color="white">
+          <Text noOfLines={1} >
             {title}
           </Text>
         </Flex>

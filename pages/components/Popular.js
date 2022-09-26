@@ -8,7 +8,7 @@ const Popular = ({ baseURL }) => {
       .then((response) => response.json())
       .then((animelist) =>setList(animelist));
     return () => {};
-  }, []);
+  }, [baseURL]);
   return (
     <SimpleGrid  minChildWidth="200px" >
       {list.map((ele) => 

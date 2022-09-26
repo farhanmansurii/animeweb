@@ -15,7 +15,7 @@ const Watch = () => {
     return () => { };
   }, []);
   return (<Container color='black' align='center' width='100%'>
-    <ReactPlayer controls={true} playing={false} width='640px'  url={eplink} />
+    <ReactPlayer controls={true} playing={false} width='100vh' height='200px'  url={eplink} />
   </Container>
   )
 }
