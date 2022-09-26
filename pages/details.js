@@ -13,21 +13,19 @@ function details() {
   React.useEffect(() => {
     fetch(URL + animename)
       .then((response) => response.json())
-      .then((animelist) => console.log(animelist));
+      .then((animelist) => setDeets(animelist));
     fetch(URL + animename)
       .then((response) => response.json())
       .then((animelist) => setEpi(animelist.episodes));
     return () => { };
   }, []);
-  async function getServerSideProps() {
-    return {
-      props: {}, // will be passed to the page component as props
-    }
-  }
 
   return (
     <>
       <Flex  direction="column">
+        <Link href='/'>
+        <Button> back to Home</Button>
+        </Link>
         <Flex direction='row'>
           <Image src={deets.image} alt='' width="300px" p="3rem" />
           <Flex direction="column" pt="3rem">
