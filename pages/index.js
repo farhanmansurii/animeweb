@@ -27,11 +27,11 @@ export default function Home({ popular, action }) {
         </Text>
         <SimpleGrid minChildWidth="200px" >
           {popular.map((ele) => (
-            <VStack key={ele.id}>
+            <VStack key={ele.mal_id}>
             <AnimeCard
-              animeImg={ele.image}
-              title={ele.title}
-              id={ele.id}
+              animeImg={ele.animeImg}
+              title={ele.animeTitle}
+              id={ele.mal_id}
             />
           </VStack>
           ))}
@@ -42,11 +42,11 @@ export default function Home({ popular, action }) {
         </Text>
         <SimpleGrid minChildWidth="200px" >
           {action.map((ele) => (
-            <VStack key={ele.id}>
+            <VStack key={ele.animeId}>
               <AnimeCard
-                animeImg={ele.image}
-                title={ele.title}
-                id={ele.id}
+                animeImg={ele.animeImg}
+                title={ele.episodeTitle + ele.episodeNum}
+                id={ele.animeId}
               />
             </VStack>
           ))}
@@ -58,11 +58,11 @@ export default function Home({ popular, action }) {
 export async function getStaticProps() {
 
   const response = await fetch(
-    'https://consumet-api.herokuapp.com/anime/gogoanime/top-airing');
+    'https://animeapi-demo.herokuapp.com/popular/');
   const popular = await response.json();
-  const res = await fetch('https://consumet-api.herokuapp.com/anime/gogoanime/recent-episodes?type=1')
+  const res = await fetch('https://animeapi-demo.herokuapp.com/animix/recent-episodes')
   const action = await res.json()
   return {
-    props: { popular:popular.results, action: action.results },
+    props: { popular:popular, action: action },
   };
 }
