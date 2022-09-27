@@ -25,11 +25,11 @@ export default function Home({ popular, action }) {
         </Text>
         <SimpleGrid columns={[2, null, 5]} width={['95%', null, '80%']} alignSelf='center'>
           {popular.slice(0,10).map((ele) => (
-            <VStack key={ele.mal_id}>
+            <VStack key={ele.slug}>
             <AnimeCard
-              animeImg={ele.animeImg}
-              title={ele.animeTitle}
-              id={ele.mal_id}
+              animeImg={ele.coverImage}
+              title={ele.title.userPreferred}
+              id={ele.slug}
             />
           </VStack>
           ))}
@@ -56,11 +56,11 @@ export default function Home({ popular, action }) {
 export async function getStaticProps() {
 
   const response = await fetch(
-    'https://animeapi-demo.herokuapp.com/popular/');
+    'https://api.enime.moe/popular');
   const popular = await response.json();
   const res = await fetch('https://animeapi-demo.herokuapp.com/animix/recent-episodes')
   const action = await res.json()
   return {
-    props: { popular:popular, action: action },
+    props: { popular:popular.data, action: action },
   };
 }
