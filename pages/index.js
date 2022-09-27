@@ -23,7 +23,7 @@ export default function Home({ popular, action }) {
         <Text fontSize="3xl"  align="center" my="1rem">
           Popular Anime
         </Text>
-        <SimpleGrid columns={[2, null, 5]} width={['95%', null, '70%']} alignSelf='center'>
+        <SimpleGrid columns={[2, null, 5]} width={['95%', null, '80%']} alignSelf='center'>
           {popular.slice(0,10).map((ele) => (
             <VStack key={ele.mal_id}>
             <AnimeCard
@@ -38,7 +38,7 @@ export default function Home({ popular, action }) {
         <Text fontSize="3xl"  align="center" my="1rem">
           Recent Episodes
         </Text>
-        <SimpleGrid minChildWidth="200px" >
+        <SimpleGrid columns={[2, null, 5]} width={['95%', null, '70%']} alignSelf='center'>
           {action.map((ele) => (
             <VStack key={ele.animeId}>
               <AnimeCard
