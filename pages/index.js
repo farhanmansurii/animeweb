@@ -19,14 +19,12 @@ export const baseURL = "https://gogoanime.herokuapp.com/";
 export default function Home({ popular, action }) {
   return (
     <Grid>
-      <Navbar />
-
       <Flex direction="column" mt="4rem">
         <Text fontSize="3xl"  align="center" my="1rem">
           Popular Anime
         </Text>
-        <SimpleGrid minChildWidth="200px" >
-          {popular.map((ele) => (
+        <SimpleGrid columns={[2, null, 5]} width={['95%', null, '70%']} alignSelf='center'>
+          {popular.slice(0,10).map((ele) => (
             <VStack key={ele.mal_id}>
             <AnimeCard
               animeImg={ele.animeImg}

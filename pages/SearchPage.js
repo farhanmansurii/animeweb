@@ -16,7 +16,9 @@ function SearchPage() {
   }, [search])
   
   return (<>
-  
+  <Link href='/'>
+        <Button> back to Home</Button>
+        </Link>
     <Input variant='flushed' bg='inherit' placeholder='Search Any Anime/Movie' input={search} onChange={(e) => setSearch(e.target.value)} />
     <Text>{search}</Text>
     {searchList.map((e)=><>
