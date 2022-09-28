@@ -7,7 +7,7 @@ import "swiper/css";
 export const baseURL = "https://gogoanime.herokuapp.com/";
 export default function Home({ popular, action }) {
   return (
-    <div className="flex px-10 place-self-center scrollbar-hide overflow-x-scroll whitespace-nowrap space-x-10 flex-nowrap w-full xl:w-10/12 ">
+    <div className="flex px-10 place-self-center scrollbar-hide overflow-x-scroll whitespace-nowrap space-x-10 flex-nowrap w-full items-center ">
       <Swiper
         slidesPerView={2}
         breakpoints={{
@@ -20,7 +20,7 @@ export default function Home({ popular, action }) {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 6,
             spaceBetween: 50,
           },
         }}

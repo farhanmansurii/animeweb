@@ -1,7 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { Text, Image, VStack, Container, Flex, HStack, SimpleGrid, Button, Divider } from "@chakra-ui/react";
+import {
+  Text,
+  Image,
+  VStack,
+  Container,
+  Flex,
+  HStack,
+  SimpleGrid,
+  Button,
+  Divider,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import Episode from "./components/Episode";
 
@@ -12,49 +22,65 @@ function details() {
   const [name, setName] = useState([]);
   const router = useRouter();
   const animename = router.query.id;
-  const URL = "https://consumet-api.herokuapp.com/anime/gogoanime/info/";
   React.useEffect(() => {
-    fetch('https://api.enime.moe/anime/' + animename)
+    fetch("https://api.enime.moe/anime/" + animename)
       .then((response) => response.json())
       .then((animelist) => {
-        setDeets(animelist)
-        fetch('https://consumet-api.herokuapp.com/meta/anilist/info/' + animelist.anilistId).then((res) => res.json()).then(data => {
-          setDeets(data)
-          console.log(data)
-          setName(data.title)
-          setEpi(data.episodes)
-        })
+        setDeets(animelist);
+        console.log(animelist.coverImage);
+        setName(animelist.title);
+        setEpi(animelist.episodes);
+        console.log(animelist.episodes);
+      });
 
-
-      })
-
-
-    return () => { };
+    return () => {};
   }, []);
 
   return (
-    <  >
-      <Flex direction="column" align='center'  >
-        <Flex bgRepeat='no-repeat' bgImage={deets.cover} bgSize='cover' bgPos='center' width='100%' >
-          <Flex   bgGradient='linear(to-t, white, rgba(255, 255, 255, .1))' width='100%'>
-            <Flex direction={{ base: 'column', md: 'row' }} align='center'>
-
-              <Image src={deets.image} alt='' width={{ base: '250px', md: '200px' }} m='1rem' align='center' />
-              <Flex direction="column" p="2rem" align='start'>
-              <div className="text-shadow-xl text-black text-4xl font-semibold" >
+    <>
+      <div class=" flex-column  ">
+        <div
+          style={{ backgroundImage: `url(${deets.bannerImage})` }}
+          class="bg-cover bg-center "
+        >
+          <div class="bg-gradient-to-t from-white to-transparent w-100">
+            <div class="flex flex-col md:flex-row items-center  ">
+              <Image
+                src={deets.coverImage}
+                alt=""
+                width={{ base: "250px", md: "150px" }}
+                mt="5rem"
+                mx="2rem"
+                align="center"
+              />
+              <div className="flex flex-col p-2 ">
+                <div className="text-shadow-xl text-black text-4xl font-semibold">
                   {name.english}
                 </div>
-                <div className="text-shadow-md text-black text-sm  mt-2" >{deets.description}</div>
-              </Flex>
-            </Flex>
-          </Flex>
-        </Flex>
-        <Text fontSize='2xl' m='1rem'>Episode List</Text>
-        <SimpleGrid columns={[2, null, 3]} spacing='30px' width='90%'>
-          {
-            epi && epi.map((e, index) => <Link key={e.id} href={`/watch?id=${e.id}`}><Episode image={e.image} title={e.title} number={e.number} /></Link>)}
-        </SimpleGrid>
-      </Flex>
+                <div className="text-shadow-md text-black text-sm  mt-2">
+                  {deets.description}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Text fontSize="2xl" m="1rem">
+        Episode List
+      </Text>
+      <SimpleGrid columns={[2, null, 3]} spacing="30px" width="90%">
+        {epi &&
+          epi.map((e) => (
+            <Link
+              key={e.sources[0].target}
+              href={`/watch?id=${e.sources[0].target}`}
+            >
+              <div style={{ backgroundImage: `url(${e.image})` }}>
+                {e.title}
+              </div>
+            </Link>
+          ))}
+      </SimpleGrid>
     </>
   );
 }

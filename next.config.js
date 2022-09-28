@@ -2,9 +2,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['cdnimg.xyz'],
-  }
-}
+    domains: ["s4.anilist.co"],
+  },
+};
 
-module.exports = nextConfig
-
+module.exports = nextConfig;

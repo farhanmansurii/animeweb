@@ -1,24 +1,22 @@
-import React, { useState,useEffect } from 'react'
-import { useRouter } from 'next/router';
-import { Container } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
-const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { Container } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 const Watch = () => {
   const router = useRouter();
   const episodeName = router.query.id;
-  const URL = 'https://consumet-api.herokuapp.com/meta/anilist/watch/'
-  const [eplink, setEplink] = useState()
+  const URL = "https://consumet-api.herokuapp.com/anime/gogoanime/watch";
+  const [eplink, setEplink] = useState();
   useEffect(() => {
     fetch(URL + episodeName)
       .then((response) => response.json())
-      .then((animelist) =>{ 
-        setEplink(animelist.sources[0]?.url)
+      .then((animelist) => {
+        setEplink(animelist.sources[0]?.url);
       });
-    return () => { };
+    return () => {};
   }, []);
-  return (
-    <ReactPlayer controls={true} playing={false}   url={eplink} />
-  )
-}
+  return <ReactPlayer controls={true} url={eplink} />;
+};
 
-export default Watch
+export default Watch;
