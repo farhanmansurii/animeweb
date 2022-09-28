@@ -1,56 +1,50 @@
-import {
-  Flex,
-  Grid,
-  HStack,
-  Text,
-  Button, SimpleGrid,
-  Image,
-  VStack,
-  Divider,
-} from "@chakra-ui/react";
-import ReactPlayer from 'react-player'
-import Head from "next/head";
+
+import 'react-pagination-bar/dist/index.css'
 import AnimeCard from "./components/AnimeCard";
-import Navbar from "./components/Navbar";
-import ScrollContainer from "react-indiana-drag-scroll";
+import { SunIcon } from "@chakra-ui/icons";
 import React from "react";
-import Popular from "./components/Popular";
+import { Swiper, SwiperSlide,FreeMode } from 'swiper/react';
+import 'swiper/css';
 export const baseURL = "https://gogoanime.herokuapp.com/";
 export default function Home({ popular, action }) {
+
   return (
-    <Grid>
-      <Flex direction="column" mt="4rem">
-        <Text fontSize="3xl"  align="center" my="1rem">
-          Popular Anime
-        </Text>
-        <SimpleGrid columns={[2, null, 5]} width={['95%', null, '80%']} alignSelf='center'>
-          {popular.slice(0,10).map((ele) => (
-            <VStack key={ele.slug}>
+
+
+
+    <div className="flex px-10 place-self-center scrollbar-hide overflow-x-scroll whitespace-nowrap space-x-10 flex-nowrap w-full xl:w-10/12 " >
+      <Swiper
+        
+        slidesPerView={2}  breakpoints={{
+          667: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
+      > 
+
+        {popular.map((ele) => (
+          <SwiperSlide
+            key={ele.slug}
+          >
             <AnimeCard
               animeImg={ele.coverImage}
               title={ele.title.userPreferred}
               id={ele.slug}
             />
-          </VStack>
-          ))}
-        </SimpleGrid>
-        <Divider my="1rem" />
-        <Text fontSize="3xl"  align="center" my="1rem">
-          Recent Episodes
-        </Text>
-        <SimpleGrid columns={[2, null, 5]} width={['95%', null, '70%']} alignSelf='center'>
-          {action.map((ele) => (
-            <VStack key={ele.animeId}>
-              <AnimeCard
-                animeImg={ele.animeImg}
-                title={ele.episodeTitle + ele.episodeNum}
-                id={ele.animeId}
-              />
-            </VStack>
-          ))}
-        </SimpleGrid>
-      </Flex>
-    </Grid>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+
   );
 }
 export async function getStaticProps() {
@@ -58,9 +52,9 @@ export async function getStaticProps() {
   const response = await fetch(
     'https://api.enime.moe/popular');
   const popular = await response.json();
-  const res = await fetch('https://animeapi-demo.herokuapp.com/animix/recent-episodes')
+  const res = await fetch('https://api.enime.moe/recent')
   const action = await res.json()
   return {
-    props: { popular:popular.data, action: action },
+    props: { popular: popular.data, action: action.data },
   };
 }

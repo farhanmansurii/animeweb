@@ -3,7 +3,6 @@ import React from "react";
 import Link from "next/link";
 const data = [
   { name: "Home", link: "/" },
-  { name: "Manga", link: "/manga" },
   { name: "Anime", link: "/anime" },
   { name: "My List", link: "/mylist" },
 ];
@@ -11,10 +10,9 @@ const Navbar = () => {
   return (
     <Flex
       as="header"
-      position="fixed"
       w="100%"
-      backdropFilter="saturate(180%) blur(5px)"
-      p="0.5rem"
+      backdropFilter="saturate(100%) blur(5px)"
+      p="0.5rem" 
     >
 
       {data.map((e, index) => (

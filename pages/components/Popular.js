@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, VStack, Grid, SimpleGrid } from "@chakra-ui/react";
 import AnimeCard from "./AnimeCard";
 const Popular = ({ baseURL }) => {
+  const [pageApi, setPageApi] = useState(1);
   const [list, setList] = React.useState([]);
   React.useEffect(() => {
     fetch(baseURL)
