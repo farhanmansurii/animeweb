@@ -6,7 +6,7 @@ const data = [
   { name: "Home", link: "/" },
   { name: "Anime", link: "/anime" },
   { name: "My List", link: "/mylist" },
-  { name: "Search", link: "/search" },
+  { name: "Search", link: "/searchpage" },
 ];
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
