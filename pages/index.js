@@ -2,7 +2,7 @@ import "react-pagination-bar/dist/index.css";
 import AnimeCard from "./components/AnimeCard";
 import { SunIcon } from "@chakra-ui/icons";
 import React from "react";
-import { Row } from "./components/Row";
+import Row from "./components/Row";
 import { Swiper, SwiperSlide, FreeMode } from "swiper/react";
 import "swiper/css";
 import Episode from "./components/Episode";
