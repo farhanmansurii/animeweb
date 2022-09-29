@@ -30,10 +30,9 @@ function details() {
         console.log(animelist);
         setName(animelist.title);
         setEpi(animelist.episodes);
-
       });
 
-    return () => { };
+    return () => {};
   }, []);
 
   return (
@@ -57,7 +56,10 @@ function details() {
                 <div className="text-shadow-xl text-black text-4xl font-semibold">
                   {name.english}
                 </div>
-                <div className="bg-white my-3 text-black w-fit br-20 "> status: {deets.status}</div>
+                <div className="bg-white my-3 text-black w-fit br-20 ">
+                  {" "}
+                  status: {deets.status}
+                </div>
                 <div className="text-shadow-md line-clamp-5 text-black text-sm  mt-2">
                   {deets.description}
                 </div>
@@ -77,7 +79,12 @@ function details() {
               key={e.sources[0].target}
               href={`/watch?id=${e.sources[0].target}`}
             >
-              <Episode title={e.title} number={e.number} description={e.description} image={e.image} />
+              <Episode
+                title={e.title}
+                number={e.number}
+                description={e.description}
+                image={e.image}
+              />
             </Link>
           ))}
       </div>
