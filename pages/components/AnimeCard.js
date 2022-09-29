@@ -7,44 +7,17 @@ function AnimeCard({ animeImg, title, id }) {
   return (
     <>
       <Link href={`/details?id=${id}`}>
-        <Box
-          display="flex"
-          height={[260.7, 311.1, 355.6]}
-          textAlign="center"
-          borderRadius="xl"
-          _hover={{ border: "5px solid gray", transition: "0.7" }}
-          flexDir="column-reverse"
-          bgSize="cover"
-          bgRepeat="no-repeat"
-          mt="4rem"
-          flexWrap="nowrap"
-          w={[145, 175, 200]}
-          zalignSelf="center"
-          backgroundImage={animeImg}
-          bgPos="center"
-        >
-          <Flex
-            dir="column"
-            pt="6"
-            pb="2"
-            px="1"
-            justifyContent="space-between"
-            bgGradient="linear(to-t, black, rgba(255, 255, 255, .05))"
-            borderBottomRadius="inherit"
-          >
-            <div className="text-white whitespace-wrap ">{title}</div>
-            <Icon
-              as={AddIcon}
-              boxSize="25px"
-              p="1.5"
-              mr="1rem"
-              mb="1rem"
-              alignSelf="end"
-              borderRadius="full"
-              bgColor="beige"
-            />{" "}
-          </Flex>
-        </Box>
+        <div className="flex flex-col-reverse bg-cover text-center aspect-[2/3] sm:h-36 md:h-40 lg:h-48 sm:w-24 md:w-28 lg:w-30 bg-center bg-no-repeat "
+          height={[150, 175, 200]}
+          style={{ backgroundImage: `url(${animeImg})` }}
+          w={[100, 116, 133]} 
+          
+        ><div className=" bg-gradient-to-t mt-30 from-black to-transparent">
+
+            <div className="text-white text-sm whitespace-pre-wrap my-4 mx-2 font-semibold">{title}</div>
+        </div>
+            
+        </div>
       </Link>
     </>
   );

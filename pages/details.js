@@ -23,17 +23,17 @@ function details() {
   const router = useRouter();
   const animename = router.query.id;
   React.useEffect(() => {
-    fetch("https://api.enime.moe/anime/" + animename)
+    fetch("https://api.enime.moe/mapping/mal/" + animename)
       .then((response) => response.json())
       .then((animelist) => {
         setDeets(animelist);
-        console.log(animelist.coverImage);
+        console.log(animelist);
         setName(animelist.title);
         setEpi(animelist.episodes);
-        console.log(animelist.episodes);
+
       });
 
-    return () => {};
+    return () => { };
   }, []);
 
   return (
@@ -57,7 +57,8 @@ function details() {
                 <div className="text-shadow-xl text-black text-4xl font-semibold">
                   {name.english}
                 </div>
-                <div className="text-shadow-md text-black text-sm  mt-2">
+                <div className="bg-white my-3 text-black w-fit br-20 "> status: {deets.status}</div>
+                <div className="text-shadow-md line-clamp-5 text-black text-sm  mt-2">
                   {deets.description}
                 </div>
               </div>
@@ -68,19 +69,18 @@ function details() {
       <Text fontSize="2xl" m="1rem">
         Episode List
       </Text>
-      <SimpleGrid columns={[2, null, 3]} spacing="30px" width="90%">
+
+      <div className="flex flex-row overflow-x-scroll whitespace-nowrap">
         {epi &&
           epi.map((e) => (
             <Link
               key={e.sources[0].target}
               href={`/watch?id=${e.sources[0].target}`}
             >
-              <div style={{ backgroundImage: `url(${e.image})` }}>
-                {e.title}
-              </div>
+              <Episode title={e.title} number={e.number} description={e.description} image={e.image} />
             </Link>
           ))}
-      </SimpleGrid>
+      </div>
     </>
   );
 }

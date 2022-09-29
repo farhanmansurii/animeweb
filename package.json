@@ -19,6 +19,7 @@
     "@oplayer/hls": "^1.0.44",
     "@oplayer/react": "^1.0.44",
     "@oplayer/ui": "^1.0.44",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "framer-motion": "^7.3.6",
     "next": "12.3.1",
     "react": "18.2.0",

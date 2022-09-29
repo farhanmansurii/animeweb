@@ -6,13 +6,12 @@ const data = [
   { name: "Home", link: "/" },
   { name: "Anime", link: "/anime" },
   { name: "My List", link: "/mylist" },
-  { name: "Search", link: "/searchpage" },
 ];
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <div>
-      <nav className="backdrop-filter backdrop-blur-md fixed z-10 border-radius-3xl w-screen">
+      <nav className="backdrop-filter backdrop-blur-md  z-10 border-radius-3xl w-full ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">

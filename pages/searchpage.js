@@ -6,7 +6,6 @@ import Link from "next/link";
 const searchpage = () => {
   const [val, setval] = useState("");
   const [searchList, setSearchList] = useState([]);
-  const URL = "https://api.enime.moe/search/";
 
   useEffect(() => {
     fetch(URL + val)
