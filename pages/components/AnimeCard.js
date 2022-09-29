@@ -8,13 +8,11 @@ function AnimeCard({ animeImg, title, id }) {
     <>
       <Link href={`/details?id=${id}`}>
         <div
-          className="flex flex-col-reverse bg-cover text-center aspect-[2/3] sm:h-36 md:h-40 lg:h-48 sm:w-24 md:w-28 lg:w-30 bg-center bg-no-repeat "
-          height={[150, 175, 200]}
+          className="flex flex-col-reverse bg-cover text-center aspect-[2/3] sm:h-36 md:h-40 lg:h-48 sm:min-w-24 md:w-28 lg:w-30 bg-center bg-no-repeat whitespace-nowrap"
           style={{ backgroundImage: `url(${animeImg})` }}
-          w={[100, 116, 133]}
         >
           <div className=" bg-gradient-to-t mt-30 from-black to-transparent">
-            <div className="text-white text-sm whitespace-pre-wrap my-4 mx-2 font-semibold">
+            <div className="text-white text-sm whitespace-pre-wrap my-4 mx-2 font-semibold line-clamp-3">
               {title}
             </div>
           </div>
