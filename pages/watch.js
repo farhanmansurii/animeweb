@@ -6,7 +6,7 @@ const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 const Watch = () => {
   const router = useRouter();
   const episodeName = router.query.id;
-  const URL = "https://consumet-api.herokuapp.com/anime/gogoanime/watch";
+  const URL = "https://consumet-api.herokuapp.com/anime/enime/watch?episodeId=";
   const [eplink, setEplink] = useState();
   useEffect(() => {
     fetch(URL + episodeName)

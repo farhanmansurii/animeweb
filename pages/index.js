@@ -15,7 +15,7 @@ export default function Home({ popular, action, adventure }) {
             spaceBetween={35}
             breakpoints={{
               "@0.00": {
-                slidesPerView: 4.4,
+                slidesPerView: 3.6,
                 spaceBetween: 6,
               },
               "@0.75": {
@@ -56,7 +56,7 @@ export default function Home({ popular, action, adventure }) {
             spaceBetween={35}
             breakpoints={{
               "@0.00": {
-                slidesPerView: 4.4,
+                slidesPerView: 3.6,
                 spaceBetween: 6,
               },
               "@0.75": {
@@ -97,7 +97,7 @@ export default function Home({ popular, action, adventure }) {
             spaceBetween={35}
             breakpoints={{
               "@0.00": {
-                slidesPerView: 4.4,
+                slidesPerView: 3.6,
                 spaceBetween: 6,
               },
               "@0.75": {
