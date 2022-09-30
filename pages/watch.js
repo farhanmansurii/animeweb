@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Container } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 const Watch = () => {
   const router = useRouter();
   const episodeName = router.query.id;
-  const URL = "https://consumet-api.herokuapp.com/anime/enime/watch?episodeId=";
   const [eplink, setEplink] = useState();
   useEffect(() => {
     fetch(URL + episodeName)
@@ -16,7 +14,7 @@ const Watch = () => {
       });
     return () => {};
   }, []);
-  return <ReactPlayer controls={true} url={eplink} />;
+  return <ReactPlayer width={400} controls={true} url='' />;
 };
 
 export default Watch;
