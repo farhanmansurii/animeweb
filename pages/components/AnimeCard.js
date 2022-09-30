@@ -1,19 +1,22 @@
 import { Box, Flex, Text, Icon, Button, transition } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
-import { AddIcon } from "@chakra-ui/icons";
 
-function AnimeCard({ animeImg, title, id }) {
+function AnimeCard({ animeImg, title, id , rating}) {
   return (
     <>
       <Link href={`/details?id=${id}`}>
         <div
-          className="flex flex-col-reverse bg-cover text-center aspect-[2/3] sm:h-38 md:h-40 lg:h-48 sm:min-w-26 md:w-28 lg:w-30 bg-center bg-no-repeat whitespace-nowrap"
+          className="flex flex-col-reverse bg-cover ease-in transform sm:hover:scale-105  hover:z-50 w-[150px] h-[213.60px] bg-center bg-no-repeat whitespace-nowrap "
           style={{ backgroundImage: `url(${animeImg})` }}
         >
-          <div className=" bg-gradient-to-t mt-30 from-black to-transparent">
-            <div className="text-white text-sm sm:text-xs whitespace-pre-wrap my-4 mx-2 font-semibold line-clamp-3">
+          <div className=" bg-gradient-to-t mt-30  from-black to-transparent">
+            <div className="flex flex-row justify-between my-4">
+
+            <div className="text-white text-md sm:text-xs whitespace-pre-wrap  mx-2  line-clamp-3">
               {title}
+            </div>
+          <div className=" text-black bg-white py-1 px-2  rounded-lg  text-xs w-fit mr-2  h-fit p-2rounded-2xl place-self-end  ">{rating} ★ </div>
             </div>
           </div>
         </div>
