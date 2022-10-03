@@ -63,12 +63,13 @@ function details({ deets, epi, relations }) {
 
 
                   <div className="flex flex-wrap my-2" >
-                    <div className="px-2 py-1 my-1 bg-transparent backdrop-blur font-bold text-black mx-1 rounded-sm">Category  :</div>
+                    <div className="px-2 py-1 my-1 bg-transparent backdrop-blur font-bold text-black mx-1  border-2 border-black  rounded-sm">Category  :</div>
                     {deets.genre.map((e ,index) =>
-                      <div key={index} className="px-2 py-1 m-1 bg-transparent backdrop-blur border border-black  font-semibold text-black rounded-sm">{e}</div>)}
+                      <div key={index} className="px-2 py-1 m-1 bg-transparent backdrop-blur  border border-black   font-semibold text-black rounded-sm">{e}</div>)}
                   </div>
-                  {deets.format === 'TV' && <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm w-fit">Total Episodes : {deets.episodes.length} minutes</div>}
-                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm w-fit">Duration : {deets.duration} minutes</div>
+                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black border-2 border-black rounded-sm w-fit">Status : {deets.status}</div>
+                  {deets.format === 'TV' && <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black  border-2 border-black rounded-sm w-fit">Total Episodes : {deets.episodes.length} Episodes</div>}
+                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm  border-2 border-black w-fit">Duration : {deets.duration} minutes</div>
                   <div className="text-shadow-md line-clamp-5 text-black text-sm  mt-2">
                     {deets.description}
                   </div>
@@ -79,7 +80,7 @@ function details({ deets, epi, relations }) {
         </div>
       )}
       {<div className=" place-self-center my-5 w-[300px] mx-auto whitespace-wrap ">
-        <div className="my-5 text-xl align-center font-semibold ">Currently Playing Ep {epi[epnumber].number - 1} - {epi[epnumber].title}
+        <div className="my-5 text-xl align-center font-semibold ">Currently Playing Ep {epi[epnumber].number - 1} - {epi[epnumber-1].title}
         </div>
         <ReactPlayer controls={true} height={168.8} width={300} url={eplink && eplink} />
       </div>
