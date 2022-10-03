@@ -1,42 +1,42 @@
-export default{
-  popular:{
+export default {
+  popular: {
     title: "Popular",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/advanced-search?sort=[%22POPULARITY_DESC%22]"
+    url: "https://api.consumet.org/meta/anilist/advanced-search?sort=[%22POPULARITY_DESC%22]",
   },
-  action :{
+  action: {
     title: "Action",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Action%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Action%22]",
   },
-  comedy :{
+  comedy: {
     title: " Comedy",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Comedy%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Comedy%22]",
   },
-  drama :{
+  drama: {
     title: "Drama ",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Drama%22]"
+    url: "https://api.consumet.org/meta/anilist/advanced-search?sort=[%22POPULARITY_DESC%22,%22UPDATED_AT_DESC%22]",
   },
-  fantasy :{
+  fantasy: {
     title: "Fantasy ",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Fantasy%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Fantasy%22]",
   },
-  horror :{
+  horror: {
     title: " Horror",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Horror%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Horror%22]",
   },
-  mystery :{
+  mystery: {
     title: " Mystery",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Mystery%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Mystery%22]",
   },
-  psychological :{
+  psychological: {
     title: "Psychological ",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Psychological%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Psychological%22]",
   },
-  romance :{
+  romance: {
     title: "Romance",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Romance%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Romance%22]",
   },
-  sliceoflife :{
+  sliceoflife: {
     title: "Slice Of Life ",
-    url : "https://consumet-api.herokuapp.com/meta/anilist/genre?genres=[%22Slice%20of%20Life%22]"
+    url: "https://api.consumet.org/meta/anilist/genre?genres=[%22Slice%20of%20Life%22]",
   },
-}
+};
