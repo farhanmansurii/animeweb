@@ -13,10 +13,12 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-
+import AnimeCard from "./components/AnimeCard";
+import { useRef } from "react";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
-function details({ deets, epi }) {
-  const [epid, setepid] = useState('')
+function details({ deets, epi, relations }) {
+  const [epid, setepid] = useState(epi[0].id)
+  const [epnumber, setepnumber] = useState(1)
   const [eplink, setEplink] = useState('')
   const URL = "https://consumet-api.herokuapp.com/anime/enime/watch?episodeId=";
 
@@ -54,12 +56,19 @@ function details({ deets, epi }) {
                   align="center"
                 />
                 <div className="flex flex-col p-2 ">
-                  <div className="text-shadow-xl text-black text-4xl font-semibold">
-                    {deets.title.english}
+                  <div className="flex sm:flex-auto">|
+                    <div className="text-shadow-xl text-black text-4xl font-semibold">
+                      {deets.title.english}  </div><div className="px-2 py-1bg-transparent backdrop-blur text-black font-bold rounded-sm w-fit h-fit align-bottom mt-2 mx-4"> {deets.format}</div>
                   </div>
-                  <div className="bg-white my-3 text-black w-fit  ">
-                    {deets.status}
+
+
+                  <div className="flex flex-wrap my-2" >
+                    <div className="px-2 py-1 my-1 bg-transparent backdrop-blur font-bold text-black mx-1 rounded-sm">Category  :</div>
+                    {deets.genre.map((e) =>
+                      <div className="px-2 py-1 m-1 bg-transparent backdrop-blur border border-black  font-semibold text-black rounded-sm">{e}</div>)}
                   </div>
+                  {deets.format === 'TV' && <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm w-fit">Total Episodes : {deets.episodes.length} minutes</div>}
+                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm w-fit">Duration : {deets.duration} minutes</div>
                   <div className="text-shadow-md line-clamp-5 text-black text-sm  mt-2">
                     {deets.description}
                   </div>
@@ -68,34 +77,40 @@ function details({ deets, epi }) {
             </div>
           </div>
         </div>
-      )}<div className=" sm:flex-column lg:flex-row w-fit mx-auto  ">
-        <div>
-
-          {!eplink ? <div className=" h-[225px] bg-black">hi</div>
-            :
-            <ReactPlayer height={225} width={300} controls={true} url={eplink ? eplink : ''} />
-          }
+      )}
+      {<div className=" place-self-center my-5 w-[300px] mx-auto whitespace-wrap ">
+        <div className="my-5 text-xl align-center font-semibold ">Currently Playing Ep {epi[epnumber].number - 1} - {epi[epnumber].title}
         </div>
+        <ReactPlayer controls={true} height={168.8} width={300} url={eplink && eplink} />
+      </div>
+      }
 
-        <div className="h-[225px] overflow-y-scroll whitespace-nowrap">
-          {epi &&
+      {deets.format !== 'TV' && <div onClick={() => { setepid(e.id) }}>Movie </div>}
+      {deets.format === 'TV' && <div className="my-10 mx-auto p-5 text-xl font-semibold">Episode List
+        <div className=" flex overflow-x-scroll  scrollbar-hide ">
+          {
             epi.map((e) => (
-              <div key={e.id} onClick={() => setepid(e.id)}>
+              <div key={e.id} onClick={() => { setepid(e.id), setepnumber(e.number) }} className='m-2 bg-cover h-[200px] w-[300px] ' style={{ backgroundImage: `url(${e.image})` }}>
                 <div
-                  className=" flex flex-col-reverse h-[150px] min-w-[220px] whitespace-nowrap"
-                  style={{ backgroundImage: `url(${e.image})` }}
+                  className=" flex flex-col-reverse   bg-gradient-to-t mt-30  h-full from-white to-transparent w-[220px]  bg-cover "
                 >
-                  <div className="self-bottom text-sm text-white mx-2 hidden  ">
+                  <div className="self-bottom text-sm line-clamp-2 text-black mx-2 whitespace-wrap ">
                     {e.description}
                   </div>
-                  <div className="self-bottom  text-white text-md mx-2 text-shadow-xl whitespace-pre-wrap line-clamp-3">
+                  <div className="self-bottom font-semibold text-black bg-transparent backdrop-blur-sm text-md mx-2 text-shadow-xl whitespace-pre-wrap line-clamp-3">
                     Ep {e.number} : {e.title}
                   </div>
                 </div>
               </div>
             ))}
-        </div>
-      </div>
+
+        </div></div>}<div className="my-10 mx-auto p-5 text-xl font-semibold">Related
+        <div className=" grid my-5 grid-cols-2 gap-4 md:grid-cols-6 w-11/12 lg:w-10/12">
+          {relations.map((e) =>
+            <AnimeCard animeImg={e.anime.coverImage} title={e.anime.title.english || e.anime.title.userPreferred} id={e.anime.mappings.mal} />)
+
+          }
+        </div></div>
     </>
   );
 }
@@ -103,9 +118,11 @@ export async function getServerSideProps(context) {
   const animen = context.query.id
   const deets = await fetch("https://api.enime.moe/mapping/mal/ " + animen).then((res) => res.json())
   const epi = deets.episodes
+  const slug = deets.id
+  const relations = await fetch("https://api.enime.moe/anime/" + slug).then((results) => results.json())
   return {
     props: {
-      deets, epi
+      deets, epi, relations: relations.relations
     },
   };
 }
