@@ -15,28 +15,20 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex ">
-              <div className="text-gray-900 hover:bg-gray-100 hover:text-black block px-3 py-2 rounded-md text-base font-medium">
-                <Link href='/'>
-
-                  Jhatu ki amma randi
-                </Link>
+              <div className="text-gray-200 hover:bg-gray-100 hover:text-black block px-3 py-2 rounded-md text-base font-medium">
+                <Link href="/">Jhatu ki amma randi</Link>
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex place-content-end items-baseline space-x-4">
-                  <div
-                    className=" hover:bg-gray-700 text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                  </div>
-                  {data.map((e) =>
-                  (<>
-                    <Link href={e.link}
-                    >
-                      <div className="text-gray-900 hover:bg-gray-100 hover:text-black block px-3 py-2 rounded-md text-base font-medium">
-
-                        {e.name}
-                      </div>
-                    </Link>
-                  </>
+                  <div className=" hover:bg-gray-700 text-gray-200 px-3 py-2 rounded-md text-sm font-medium"></div>
+                  {data.map((e) => (
+                    <>
+                      <Link href={e.link}>
+                        <div className="text-gray-200 hover:bg-gray-100 hover:text-black block px-3 py-2 rounded-md text-base font-medium">
+                          {e.name}
+                        </div>
+                      </Link>
+                    </>
                   ))}
                 </div>
               </div>
@@ -100,16 +92,14 @@ const Navbar = () => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                {data.map((e) =>
-                (<>
-                  <Link href={e.link}
-                  >
-                    <div className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-
-                      {e.name}
-                    </div>
-                  </Link>
-                </>
+                {data.map((e) => (
+                  <>
+                    <Link href={e.link}>
+                      <div className="text-gray-200 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                        {e.name}
+                      </div>
+                    </Link>
+                  </>
                 ))}
               </div>
             </div>

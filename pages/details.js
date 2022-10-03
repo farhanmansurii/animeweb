@@ -44,53 +44,47 @@ function details({ deets, epi, relations }) {
             style={{ backgroundImage: `url(${deets.bannerImage})` }}
             class="bg-cover bg-center "
           >
-            <div class="bg-gradient-to-t from-white to-transparent w-100">
+            <div class="bg-gradient-to-t from-black to-transparent w-100">
               <div class="flex flex-col md:flex-row items-center  ">
-                <Image
-                  src={deets.coverImage}
-                  alt=""
-                  width={{ base: "250px", md: "150px" }}
-                  mt="5rem"
-                  mx="2rem"
-                  align="center"
-                />
+                <div className=" w-2/4 bg-no-repeat h-3/4 p-2 mx-3">
+                  <Image src={deets.coverImage} layout="fill" />
+                </div>
                 <div className="flex flex-col p-2 ">
-                  <div className="flex sm:flex-auto">
-                    |
-                    <div className="text-shadow-xl text-black text-4xl font-semibold">
+                  <div className="flex sm:flex-auto sm:mt-10 ">
+                    <div className="text-shadow-xl text-white text-4xl font-semibold">
                       {deets.title.english}{" "}
                     </div>
-                    <div className="px-2 py-1bg-transparent backdrop-blur text-black font-bold rounded-sm w-fit h-fit align-bottom mt-2 mx-4">
+                    <div className="px-2 py-1bg-transparent backdrop-blur text-white font-bold rounded-sm w-fit h-fit align-bottom mt-2 mx-4">
                       {" "}
                       {deets.format}
                     </div>
                   </div>
 
                   <div className="flex flex-wrap my-2">
-                    <div className="px-2 py-1 my-1 bg-transparent backdrop-blur font-bold text-black mx-1  border-2 border-black  rounded-sm">
+                    <div className="px-2 py-1 my-1 bg-transparent backdrop-blur font-bold text-white mx-1  border-2 border-white  rounded-sm">
                       Category :
                     </div>
                     {deets.genre.map((e, index) => (
                       <div
                         key={index}
-                        className="px-2 py-1 m-1 bg-transparent backdrop-blur  border border-black   font-semibold text-black rounded-sm"
+                        className="px-2 py-1 m-1 bg-transparent backdrop-blur  border border-white   font-semibold text-white rounded-sm"
                       >
                         {e}
                       </div>
                     ))}
                   </div>
-                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black border-2 border-black rounded-sm w-fit">
+                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-white border-2 border-white rounded-sm w-fit">
                     Status : {deets.status}
                   </div>
                   {deets.format === "TV" && (
-                    <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black  border-2 border-black rounded-sm w-fit">
+                    <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-white  border-2 border-white rounded-sm w-fit">
                       Total Episodes : {deets.episodes.length} Episodes
                     </div>
                   )}
-                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm  border-2 border-black w-fit">
+                  <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-white rounded-sm  border-2 border-white w-fit">
                     Duration : {deets.duration} minutes
                   </div>
-                  <div className="text-shadow-md line-clamp-5 text-black text-sm  mt-2">
+                  <div className="text-shadow-md line-clamp-5 text-white text-sm  mt-2">
                     {deets.description}
                   </div>
                 </div>
@@ -101,7 +95,7 @@ function details({ deets, epi, relations }) {
       )}
       {
         <div className=" place-self-center my-5 w-[300px] mx-auto whitespace-wrap ">
-          <div className="my-5 text-xl align-center font-semibold ">
+          <div className="my-5 text-xl text-white align-center font-semibold ">
             Currently Playing Ep {epi[epnumber].number - 1} -{" "}
             {epi[epnumber - 1].title}
           </div>
@@ -124,7 +118,7 @@ function details({ deets, epi, relations }) {
         </div>
       )}
       {deets.format === "TV" && (
-        <div className="my-10 mx-auto p-5 text-xl font-semibold">
+        <div className="my-10 mx-auto p-5 text-xl  text-white font-semibold">
           Episode List
           <div className=" flex overflow-x-scroll  scrollbar-hide ">
             {epi.map((e) => (
@@ -136,11 +130,11 @@ function details({ deets, epi, relations }) {
                 className="m-2 bg-cover h-[200px] w-[300px] "
                 style={{ backgroundImage: `url(${e.image})` }}
               >
-                <div className=" flex flex-col-reverse   bg-gradient-to-t mt-30  h-full from-white to-transparent w-[220px]  bg-cover ">
-                  <div className="self-bottom text-sm line-clamp-2 text-black mx-2 whitespace-wrap ">
+                <div className=" flex flex-col-reverse   bg-gradient-to-t mt-30  h-full from-black to-transparent w-[220px]  bg-cover ">
+                  <div className="self-bottom text-sm line-clamp-2 text-white mx-2 whitespace-wrap ">
                     {e.description}
                   </div>
-                  <div className="self-bottom font-semibold text-black bg-transparent backdrop-blur-sm text-md mx-2 text-shadow-xl whitespace-pre-wrap line-clamp-3">
+                  <div className="self-bottom font-semibold text-white bg-transparent backdrop-blur-sm text-md mx-2 text-shadow-xl whitespace-pre-wrap line-clamp-3">
                     Ep {e.number} : {e.title}
                   </div>
                 </div>
@@ -149,7 +143,7 @@ function details({ deets, epi, relations }) {
           </div>
         </div>
       )}
-      <div className="my-10 mx-auto p-5 text-xl font-semibold">
+      <div className="my-10 mx-auto p-5 text-xl text-white font-semibold">
         Related
         <div className=" grid my-5 grid-cols-2 gap-4 md:grid-cols-6 w-11/12 lg:w-10/12">
           {relations.map((e) => (

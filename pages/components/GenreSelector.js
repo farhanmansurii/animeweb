@@ -9,7 +9,7 @@ const GenreSelector = () => {
         {Object.entries(requests).map(([key, { title, url }]) => (
           <h2
             onClick={() => router.push(`/?genre=${key}`)}
-            className=" first:pl-24 last:pr-24 cursor-pointer  transition duration-100 transform hover:scale-125 hover:text-gray-500 active:text-red-500"
+            className=" first:pl-24 last:pr-24 cursor-pointer  text-white transition duration-100 transform hover:scale-125 hover:text-gray-200 active:text-red-500"
             key={key}
           >
             {title}
