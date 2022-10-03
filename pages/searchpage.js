@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
-import { Button, Input, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 const searchpage = () => {
@@ -16,21 +15,7 @@ const searchpage = () => {
 
   return (
     <>
-      <Input
-        variant="flushed"
-        bg="inherit"
-        placeholder="Search Any Anime/Movie"
-        input={val}
-        onChange={(e) => setval(e.target.value)}
-      />
-      <Text>{val}</Text>
-      {searchList?.map((e, index) => (
-        <>
-          <Link key={index} href={`/details?id=${e.id}`}>
-            <Button>{e.title.userPreferred}</Button>
-          </Link>
-        </>
-      ))}
+      <div>hi</div>
     </>
   );
 };
