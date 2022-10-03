@@ -1,4 +1,3 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
