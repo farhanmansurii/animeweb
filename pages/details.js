@@ -1,20 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  Image,
-  VStack,
-  Container,
-  Flex,
-  HStack,
-  SimpleGrid,
-  Button,
-  Divider,
-} from "@chakra-ui/react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import AnimeCard from "./components/AnimeCard";
 import { useRef } from "react";
+import Image from "next/image";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 function details({ deets, epi, relations }) {
   const [epid, setepid] = useState(epi[0].id);
@@ -47,7 +37,12 @@ function details({ deets, epi, relations }) {
             <div class="bg-gradient-to-t from-black to-transparent w-100">
               <div class="flex flex-col md:flex-row items-center  ">
                 <div className=" w-2/4 bg-no-repeat h-3/4 p-2 mx-3">
-                  <Image src={deets.coverImage} layout="fill" />
+                  <Image
+                    src={deets.coverImage}
+                    width={500}
+                    height={700}
+                    layout="responsive"
+                  />
                 </div>
                 <div className="flex flex-col p-2 ">
                   <div className="flex sm:flex-auto sm:mt-10 ">
