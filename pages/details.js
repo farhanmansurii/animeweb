@@ -64,8 +64,8 @@ function details({ deets, epi, relations }) {
 
                   <div className="flex flex-wrap my-2" >
                     <div className="px-2 py-1 my-1 bg-transparent backdrop-blur font-bold text-black mx-1 rounded-sm">Category  :</div>
-                    {deets.genre.map((e) =>
-                      <div className="px-2 py-1 m-1 bg-transparent backdrop-blur border border-black  font-semibold text-black rounded-sm">{e}</div>)}
+                    {deets.genre.map((e ,index) =>
+                      <div key={index} className="px-2 py-1 m-1 bg-transparent backdrop-blur border border-black  font-semibold text-black rounded-sm">{e}</div>)}
                   </div>
                   {deets.format === 'TV' && <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm w-fit">Total Episodes : {deets.episodes.length} minutes</div>}
                   <div className="px-2 py-1 m-1 bg-transparent backdrop-blur font-semibold text-black rounded-sm w-fit">Duration : {deets.duration} minutes</div>
@@ -107,7 +107,7 @@ function details({ deets, epi, relations }) {
         </div></div>}<div className="my-10 mx-auto p-5 text-xl font-semibold">Related
         <div className=" grid my-5 grid-cols-2 gap-4 md:grid-cols-6 w-11/12 lg:w-10/12">
           {relations.map((e) =>
-            <AnimeCard animeImg={e.anime.coverImage} title={e.anime.title.english || e.anime.title.userPreferred} id={e.anime.mappings.mal} />)
+            <AnimeCard  key={e.anime.mappings.mal} animeImg={e.anime.coverImage} title={e.anime.title.english || e.anime.title.userPreferred} id={e.anime.mappings.mal} />)
 
           }
         </div></div>
