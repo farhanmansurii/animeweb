@@ -3,10 +3,12 @@ import AnimeCard from "./components/AnimeCard";
 import React from "react";
 import "swiper/css";
 import requests from "./api/requests";
+import SearchPage from "./searchpage";
 import GenreSelector from "./components/GenreSelector";
 export default function Home({ results }) {
   return (
     <>
+      <SearchPage />
       <GenreSelector />
       <div className="p-5 grid mx-auto my-10 grid-cols-2 gap-4 md:grid-cols-6 w-11/12 lg:w-10/12">
         {results.map((e) => (

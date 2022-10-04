@@ -7,6 +7,8 @@ import { useRef } from "react";
 import Image from "next/image";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 function details({ deets, epi, relations }) {
+  console.log(epi);
+  console.log(deets);
   const [epid, setepid] = useState(epi[0].id);
   const [epnumber, setepnumber] = useState(1);
   const [eplink, setEplink] = useState("");
@@ -39,6 +41,7 @@ function details({ deets, epi, relations }) {
                 <div className=" w-2/4 bg-no-repeat h-3/4 p-2 mx-3">
                   <Image
                     src={deets.coverImage}
+                    alt=""
                     width={500}
                     height={700}
                     layout="responsive"
