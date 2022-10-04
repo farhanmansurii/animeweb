@@ -90,10 +90,22 @@ function details({ deets, epi, relations }) {
       )}
       {
         <div className=" place-self-center my-5 w-[300px] mx-auto whitespace-wrap ">
-          <div className="my-5 text-xl text-white align-center font-semibold ">
-            Currently Playing Ep {epi[epnumber].number - 1} -{" "}
-            {epi[epnumber - 1].title}
-          </div>
+          {deets.format === "TV" && (
+            <div className="my-5 text-xl text-white align-center font-semibold ">
+              Currently Playing Ep {epi[epnumber].number - 1} -{" "}
+              {epi[epnumber - 1].title}
+            </div>
+          )}{" "}
+          {deets.format !== "TV" && (
+            <div
+              onClick={() => {
+                setepid(e.id);
+              }}
+              className="my-5 text-xl text-white align-center font-semibold "
+            >
+              {deets.format}
+            </div>
+          )}
           <ReactPlayer
             controls={true}
             height={168.8}
@@ -103,15 +115,6 @@ function details({ deets, epi, relations }) {
         </div>
       }
 
-      {deets.format !== "TV" && (
-        <div
-          onClick={() => {
-            setepid(e.id);
-          }}
-        >
-          Movie{" "}
-        </div>
-      )}
       {deets.format === "TV" && (
         <div className="my-10 mx-auto p-5 text-xl  text-white font-semibold">
           Episode List
@@ -138,19 +141,23 @@ function details({ deets, epi, relations }) {
           </div>
         </div>
       )}
-      <div className="my-10 mx-auto p-5 text-xl text-white font-semibold">
-        Related
-        <div className=" grid my-5 grid-cols-2 gap-4 md:grid-cols-6 w-11/12 lg:w-10/12">
-          {relations.map((e) => (
-            <AnimeCard
-              key={e.anime.mappings.mal}
-              animeImg={e.anime.coverImage}
-              title={e.anime.title.english || e.anime.title.userPreferred}
-              id={e.anime.mappings.mal}
-            />
-          ))}
+      {relations.length < 1 ? (
+        ""
+      ) : (
+        <div className="my-10 mx-auto p-5 text-xl text-white font-semibold">
+          Related
+          <div className=" grid my-5 grid-cols-2 gap-4 md:grid-cols-6 w-11/12 lg:w-10/12">
+            {relations.map((e) => (
+              <AnimeCard
+                key={e.anime.mappings.mal}
+                animeImg={e.anime.coverImage}
+                title={e.anime.title.english || e.anime.title.userPreferred}
+                id={e.anime.mappings.mal}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
