@@ -5,11 +5,14 @@ import "swiper/css";
 import requests from "./api/requests";
 import SearchPage from "./searchpage";
 import GenreSelector from "./components/GenreSelector";
+import Hero from "./components/Hero";
+import SimpleSlider from "./components/SimpleSlider";
 export default function Home({ results }) {
+  console.log(results)
   return (
     <>
-      <SearchPage />
-      <GenreSelector />
+    <SimpleSlider/>
+       <GenreSelector />
       <div className="p-5 grid mx-auto my-10 grid-cols-2 gap-4 md:grid-cols-6 w-11/12 lg:w-10/12">
         {results.map((e) => (
           <AnimeCard
@@ -20,15 +23,17 @@ export default function Home({ results }) {
             id={e.malId}
           />
         ))}
-      </div>
+      </div> 
+
+      <div></div>
     </>
   );
 }
 
 export async function getServerSideProps(context) {
   const genre = context.query.genre;
-  const request = await fetch(
-    requests[genre]?.url || requests.popular.url
+  const request = await fetch('https://api.consumet.org/meta/anilist/trending'
+    // requests[genre]?.url || requests.popular.url
   ).then((res) => res.json());
   return {
     props: {

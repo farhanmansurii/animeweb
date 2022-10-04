@@ -26,7 +26,7 @@ function details({ deets, epi, relations }) {
 
   useEffect(() => {
     getURL();
-    return () => {};
+    return () => { };
   }, [epid]);
   return (
     <>
@@ -38,14 +38,10 @@ function details({ deets, epi, relations }) {
           >
             <div class="bg-gradient-to-t from-black to-transparent w-100">
               <div class="flex flex-col md:flex-row items-center  ">
-                <div className=" w-2/4 bg-no-repeat h-3/4 p-2 mx-3">
-                  <Image
-                    src={deets.coverImage}
-                    alt=""
-                    width={500}
-                    height={700}
-                    layout="responsive"
-                  />
+                <div className=" p-2 my-3 mx-6">
+
+                  <div className=" w-[233.33px] bg-no-repeat h-[350px] " style={{ backgroundImage: `url(${deets.coverImage})` }}>
+                  </div>
                 </div>
                 <div className="flex flex-col p-2 ">
                   <div className="flex sm:flex-auto sm:mt-10 ">
@@ -95,7 +91,7 @@ function details({ deets, epi, relations }) {
         <div className=" place-self-center my-5 w-[300px] mx-auto whitespace-wrap ">
           {deets.format === "TV" && (
             <div className="my-5 text-xl text-white align-center font-semibold ">
-              Currently Playing Ep {epi[epnumber].number - 1} -{" "}
+              Currently Playing {'   '}
               {epi[epnumber - 1].title}
             </div>
           )}{" "}
@@ -113,7 +109,7 @@ function details({ deets, epi, relations }) {
             controls={true}
             height={168.8}
             width={300}
-            url={eplink && eplink}
+            url={eplink ||' '}
           />
         </div>
       }

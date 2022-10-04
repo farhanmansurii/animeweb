@@ -9,28 +9,33 @@
     "lint": "next lint"
   },
   "dependencies": {
-
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@headlessui/react": "^1.7.2",
+    "@nextui-org/react": "^1.0.0-beta.10",
     "@oplayer/core": "^1.0.44",
     "@oplayer/danmaku": "^1.0.44",
     "@oplayer/hls": "^1.0.44",
     "@oplayer/react": "^1.0.44",
     "@oplayer/ui": "^1.0.44",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "daisyui": "^2.31.0",
     "framer-motion": "^7.3.6",
     "next": "12.3.1",
     "react": "18.2.0",
+    "react-daisyui": "^2.4.2",
     "react-dom": "18.2.0",
     "react-flip-move": "^3.0.4",
     "react-icons": "^4.4.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-pagination-bar": "^2.0.1",
     "react-player": "^2.11.0",
+    "react-slick": "^0.29.0",
     "react-use-draggable-scroll": "^0.4.5",
+    "slick-carousel": "^1.8.1",
     "swiper": "^8.4.2",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "xtendui": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",

@@ -1,11 +1,15 @@
 import "../styles/globals.css";
-import Navbar from "./components/Navbar";
+import { NextUIProvider } from '@nextui-org/react';
+import Navbar1 from "./components/Navbar";
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Navbar />
+    <> <NextUIProvider>
+
+      <Navbar1 />
 
       <Component {...pageProps} />
+    </NextUIProvider>
+
     </>
   );
 }

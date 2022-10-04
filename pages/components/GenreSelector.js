@@ -5,7 +5,7 @@ const GenreSelector = () => {
   const router = useRouter();
   return (
     <>
-      <div className="flex py-3 px-10 sm:px-20 whitespace-nowrap space-x-10 scrollbar-hide overflow-x-scroll text-2xl">
+      <div className="flex py-3 mt-10 px-10 sm:px-20 whitespace-nowrap space-x-10 scrollbar-hide overflow-x-scroll text-2xl">
         {Object.entries(requests).map(([key, { title, url }]) => (
           <h2
             onClick={() => router.push(`/?genre=${key}`)}
