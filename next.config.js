@@ -5,4 +5,4 @@ const nextConfig = {
     domains: ["s4.anilist.co"],
   },
 };
-module.exports = nextConfig , withTM; 
+module.exports = nextConfig;
