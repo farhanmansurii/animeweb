@@ -16,7 +16,7 @@ export default function Home({ bannerimg, popular, action }) {
                 titles={e.title.english}
                 description={e.description}
                 imageban={e.cover}
-                id={e.id}
+                id={e.malId}
               />
             </SwiperSlide>
           ))}
