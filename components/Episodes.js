@@ -16,7 +16,7 @@ const Episodes = ({ epi, deets }) => {
     <div className="mt-10 text-xl  text-primary font-semibold">
       Episode List
     </div>
-    <div className=" flex overflow-x-scroll  scrollbar-hide ">
+    <div className=" flex overflow-x-scroll  mb-[10rem] scrollbar-hide  ">
       {epi.map((e) => (
         <EpisodeCard episode={e} key={e.id} />
       ))}

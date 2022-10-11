@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Row from "../components/Row";
+import AnimeCard from '../components/AnimeCard';
 const URL = "https://api.enime.moe/search/";
-
 const SearchPage = () => {
   const [val, setval] = useState("");
   const [searchList, setSearchList] = useState([]);
@@ -22,8 +21,12 @@ const SearchPage = () => {
         </div>
         <div></div>
         <div className=" flex overflow-x-scroll p-2 scrollbar-hide space-x-2 ">
-
-          <Row typeOfAnime={searchList} />
+          {searchList !== null ?
+            (<div className=" flex overflow-x-scroll p-2 scrollbar-hide space-x-2 ">
+              {searchList?.map((e) =>
+                <AnimeCard key={e.mappings.mal} animeImg={e.coverImage} title={e.title.userPreferred || e.title} id={e.mappings.mal} />
+              )}
+            </div>) : <div>Search</div>}
 
         </div>
       </div>
