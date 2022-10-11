@@ -3,45 +3,44 @@ import dynamic from "next/dynamic";
 import React from "react";
 import Animedetails from "../components/Animedetails";
 import Episodes from "../components/Episodes";
-import Related from "../components/Related";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
-function details({ deets, }) {
-  const epi = deets.episodes
-
-
+function details({ deets, anilistdeets }) {
+  const epi = anilistdeets.episodes
+  console.log(anilistdeets)
+  console.log(deets)
   return (
     <>
       {!deets ? (<div>No Data Found</div>) : (
         <div className=" flex-column  ">
-          <Animedetails deets={deets} />
+          <Animedetails deets={deets} anilistdeets={anilistdeets} />
         </div>
       )}
 
-      {deets.episodes.length >= 1 ?
+      {anilistdeets ?
         (
 
           <div className=" w-10/12 mx-auto">
-            <Episodes deets={deets} epi={epi} />
+            <Episodes deets={anilistdeets} epi={epi} />
           </div>
         ) : (<div className=" w-full mx-auto">No episodes</div>)
       }
-      {deets.relations &&
 
-        <Related relations={deets.relations} text="Related Anime " />}
-      <Related relations={deets.recommendations} text="Users Also watched" />
     </>
   );
 }
 export async function getServerSideProps(context) {
   const animen = context.query.id;
   const deets = await fetch(
-    "https://api.consumet.org/meta/anilist/info/" + animen
+    "https://api.jikan.moe/v4/anime/" + animen
   ).then((res) => res.json());
-
+  const anilistdeets = await fetch(
+    "https://api.enime.moe/mapping/mal/" + animen
+  ).then((res) => res.json());
 
   return {
     props: {
-      deets,
+      deets: deets.data,
+      anilistdeets: anilistdeets
     },
   };
 }
