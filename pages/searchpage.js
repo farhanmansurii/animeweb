@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Row from "../components/Row";
-const URL = "https://api.consumet.org/meta/anilist/";
+const URL = "https://api.enime.moe/search/";
 
 const SearchPage = () => {
   const [val, setval] = useState("");
@@ -8,7 +8,7 @@ const SearchPage = () => {
   useEffect(() => {
     fetch(URL + val)
       .then((response) => response.json())
-      .then((animelist) => setSearchList(animelist.results));
+      .then((animelist) => setSearchList(animelist.data));
 
     return () => { };
   }, [val]);
